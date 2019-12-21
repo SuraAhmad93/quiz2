@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="results"></div>
+<div id="timer">Time Left : </div>
+	<form name="quizForm" onsubmit="return submitAnswers()">
+		<label>Q3 : What you will do after 10 years ?</label><br>
+		<input type="radio" name="answer3" required="required" value="Married and set at home">Married & set at home<br>
+		<input type="radio" name="answer3" required="required" value="Creat a startup Company">Creat a startup Company<br>
+		<input type="radio" name="answer3" required="required" value="Finish a PHD Degree">Finish a PHD Degree<br>
+        <br><br>
+		<input type="Submit" value="submitAnswers" >	
+	</form>
+
+ 	<script type="text/javascript">
+ 		var sec = 15;
+        var time = setInterval(myTimer, 1000);
+
+        function myTimer() {
+        document.getElementById('timer').innerHTML = sec + "sec left";
+        sec--;
+        if (sec == -1) {
+        clearInterval(time);
+       window.location.href='mark.html';
+			return false;
+    }
+}
+
+
+ 		var url_string=window.location;
+	    var url=new URL(url_string);
+	    var mark=url.searchParams.get("mark");
+ 		function submitAnswers() {
+ 			var form = document.quizForm;
+			var q3 = form.elements['answer3'].value;
+			if(q3 == "Finish a PHD Degree"){
+				mark++;
+			}
+			window.location.href='mark.html?mark='+mark;
+			return false;
+ }
+ 	</script>
+</body>
+</html>

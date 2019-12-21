@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="results"></div>
+<div id="timer">Time Left : </div>
+	<form name="quizForm" onsubmit="return submitAnswers()">
+		<label>Q2 : What your kind ?</label><br>
+		<input type="radio" name="answer2" required="required" value="Animal">Animal<br>
+		<input type="radio" name="answer2" required="required" value="Machine">Machine<br>
+		<input type="radio" name="answer2" required="required" value="Human">Human<br>
+		<input type="radio" name="answer2" required="required" value="Other">Other<br>
+        <br><br>
+		<input type="Submit" value="Go to Q3" >	
+	</form>
+
+ 	<script type="text/javascript">
+ 		var sec = 15;
+        var time = setInterval(myTimer, 1000);
+
+        function myTimer() {
+        document.getElementById('timer').innerHTML = sec + "sec left";
+        sec--;
+        if (sec == -1) {
+        clearInterval(time);
+       window.location.href='q2.html';
+			return false;
+    }
+}
+
+
+ 		var url_string=window.location;
+	    var url=new URL(url_string);
+	    var mark=url.searchParams.get("mark");
+
+ 		function submitAnswers() {
+ 			var form = document.quizForm;
+			var q2 = form.elements['answer2'].value;
+			if(q2 == "Animal"){
+				mark++;	
+			}
+			window.location.href='q3.html?mark='+mark;
+			return false;
+ }
+ 	</script>
+</body>
+</html>

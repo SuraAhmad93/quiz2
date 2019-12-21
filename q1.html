@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="results"></div>
+<div id="timer">Time Left : </div>
+	<form name="quizForm" onsubmit="return submitAnswers()">
+		<label>Q1 : Where we are ?</label><br>
+		<input type="radio" name="answer1" required="required" value="Home">Home<br>
+		<input type="radio" name="answer1" required="required" value="University">University<br>
+		<input type="radio" name="answer1" required="required" value="Street">Street<br>
+        <br><br>
+		<input type="Submit" value="Go to Q2" >
+</form>
+
+
+ 	<script type="text/javascript">
+ 		var sec = 15;
+        var time = setInterval(myTimer, 1000);
+
+        function myTimer() {
+        document.getElementById('timer').innerHTML = sec + "sec left";
+        sec--;
+        if (sec == -1) {
+        clearInterval(time);
+       window.location.href='q2.html';
+			return false;
+    }
+}
+ 		
+ 		function submitAnswers() {
+ 			var form = document.quizForm;
+			var q1 = form.elements['answer1'].value;
+			var mark= 0 ;
+			if(q1 == "University"){
+				mark++;
+			}
+			
+			window.location.href='q2.html?mark='+mark;
+			return false;
+ }
+ 	</script>
+</body>
+</html>
